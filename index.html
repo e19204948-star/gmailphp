@@ -1,67 +1,165 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FlashFibre - La vitesse à l'état pur</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <title>Flash Fibre - Internet Ultra Rapide</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        header {
+            background-color: #0d47a1;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        .hero {
+            background-image: url('https://via.placeholder.com/1200x500?text=Flash+Fibre');
+            background-size: cover;
+            background-position: center;
+            height: 500px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero h2 {
+            font-size: 36px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .cta-button {
+            background-color: #ff9800;
+            color: white;
+            padding: 15px 30px;
+            font-size: 18px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        .cta-button:hover {
+            background-color: #f57c00;
+        }
+
+        .container {
+            width: 90%;
+            margin: 20px auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #0d47a1;
+        }
+
+        .plans {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 40px;
+        }
+
+        .plan {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 30%;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .plan:hover {
+            transform: translateY(-10px);
+        }
+
+        .plan h3 {
+            color: #0d47a1;
+            font-size: 24px;
+        }
+
+        .plan p {
+            font-size: 18px;
+            color: #555;
+        }
+
+        .footer {
+            background-color: #0d47a1;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
 </head>
+
 <body>
 
     <header>
-        <nav class="navbar">
-            <div class="logo">Flash<span>Fibre</span></div>
-            <ul class="nav-links">
-                <li><a href="#offres">Nos Offres</a></li>
-                <li><a href="#eligibilite">Éligibilité</a></li>
-                <li><a href="#" class="btn-nav">Mon Espace</a></li>
-            </ul>
-        </nav>
+        <h1>Flash Fibre - Internet Ultra Rapide</h1>
     </header>
 
     <section class="hero">
-        <div class="hero-content">
-            <h1>Passez à la vitesse <span>supérieure.</span></h1>
-            <p>La fibre ultra-rapide jusqu'à 2 Gb/s, sans engagement et installée en 48h chez vous.</p>
-            
-            <div class="cta-box" id="eligibilite">
-                <input type="text" placeholder="Entrez votre adresse postale...">
-                <button class="btn-main">Tester mon éligibilité</button>
-            </div>
-            <p class="promo">Offre spéciale : -50% les 6 premiers mois !</p>
-        </div>
+        <h2>Connectez-vous à la vitesse de la lumière avec Flash Fibre !</h2>
+        <a href="#plans" class="cta-button">Découvrez nos offres</a>
     </section>
 
-    <section id="offres" class="pricing">
-        <h2>Choisissez votre puissance</h2>
-        <div class="cards-container">
-            <div class="card">
-                <h3>Flash Solo</h3>
-                <div class="speed">500 Mb/s</div>
-                <div class="price">19,99€<span>/mois</span></div>
-                <ul>
-                    <li>Installation incluse</li>
-                    <li>Box Wi-Fi 6</li>
-                    <li>Sans engagement</li>
-                </ul>
-                <button class="btn-card">Choisir</button>
+    <div class="container">
+        <h2 class="section-title">Nos Offres</h2>
+        <div class="plans" id="plans">
+            <div class="plan">
+                <h3>Plan de Base</h3>
+                <p>Vitesse de 100 Mbps</p>
+                <p>Idéal pour une utilisation quotidienne</p>
+                <p><strong>29,99€/mois</strong></p>
+                <a href="#" class="cta-button">Souscrire</a>
             </div>
-
-            <div class="card popular">
-                <div class="badge">Le plus choisi</div>
-                <h3>Flash Family</h3>
-                <div class="speed">1 Gb/s</div>
-                <div class="price">29,99€<span>/mois</span></div>
-                <ul>
-                    <li>Idéal pour la 4K</li>
-                    <li>Répéteur Wi-Fi inclus</li>
-                    <li>Service client VIP</li>
-                </ul>
-                <button class="btn-card">Choisir</button>
+            <div class="plan">
+                <h3>Plan Standard</h3>
+                <p>Vitesse de 500 Mbps</p>
+                <p>Pour les foyers avec plusieurs utilisateurs</p>
+                <p><strong>49,99€/mois</strong></p>
+                <a href="#" class="cta-button">Souscrire</a>
+            </div>
+            <div class="plan">
+                <h3>Plan Premium</h3>
+                <p>Vitesse de 1 Gbps</p>
+                <p>Pour les utilisateurs intensifs et professionnels</p>
+                <p><strong>79,99€/mois</strong></p>
+                <a href="#" class="cta-button">Souscrire</a>
             </div>
         </div>
-    </section>
+
+        <h2 class="section-title">Pourquoi choisir Flash Fibre ?</h2>
+        <ul>
+            <li>Connexion ultra-rapide pour tous vos besoins numériques</li>
+            <li>Service client disponible 24/7</li>
+            <li>Installation rapide et gratuite</li>
+            <li>Offres flexibles sans engagement</li>
+        </ul>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2026 Flash Fibre - Tous droits réservés.</p>
+    </footer>
 
 </body>
+
 </html>
