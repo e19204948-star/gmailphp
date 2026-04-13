@@ -1,29 +1,242 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <title>Chat Pro</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Firebase Mail System</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial;
+      display: flex;
+      height: 100vh;
+    }
+
+    #sidebar {
+      width: 220px;
+      background: #111827;
+      color: white;
+      padding: 10px;
+    }
+
+    #sidebar button {
+      width: 100%;
+      margin: 5px 0;
+      padding: 10px;
+      background: #1f2937;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    #sidebar button:hover {
+      background: #374151;
+    }
+
+    #main {
+      flex: 1;
+      padding: 15px;
+      overflow-y: auto;
+    }
+
+    .mail-item {
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+      cursor: pointer;
+    }
+
+    .mail-item:hover {
+      background: #f3f4f6;
+    }
+
+    #composeBox {
+      display: none;
+    }
+
+    input, textarea {
+      width: 100%;
+      margin: 5px 0;
+      padding: 10px;
+    }
+
+    textarea {
+      height: 120px;
+    }
+
+    #loginBox {
+      margin: auto;
+      width: 300px;
+    }
+  </style>
 </head>
+
 <body>
 
+<!-- SIDEBAR -->
 <div id="sidebar">
-  <h3>Utilisateurs</h3>
-  <input id="pseudo" placeholder="Pseudo">
-  <button onclick="savePseudo()">OK</button>
-  <div id="users"></div>
+  <h3>Mail</h3>
+  <button onclick="loadInbox()">Inbox</button>
+  <button onclick="loadSent()">Sent</button>
+  <button onclick="showCompose()">Compose</button>
+  <button onclick="logout()">Logout</button>
 </div>
 
-<div id="chat">
-  <div id="messages"></div>
+<!-- MAIN -->
+<div id="main">
 
-  <div id="inputZone">
-    <input id="msg" placeholder="Message...">
-    <input type="file" id="imageInput">
-    <button onclick="send()">Envoyer</button>
+  <!-- LOGIN -->
+  <div id="loginBox">
+    <h2>Login</h2>
+    <input id="email" placeholder="Email">
+    <input id="password" type="password" placeholder="Password">
+    <button onclick="login()">Login</button>
+    <button onclick="signup()">Sign Up</button>
   </div>
+
+  <!-- APP -->
+  <div id="app" style="display:none;">
+    <h2 id="title">Inbox</h2>
+
+    <div id="mailList"></div>
+
+    <div id="composeBox">
+      <h3>New Message</h3>
+      <input id="to" placeholder="To email">
+      <input id="subject" placeholder="Subject">
+      <textarea id="body" placeholder="Message"></textarea>
+      <button onclick="sendMail()">Send</button>
+    </div>
+  </div>
+
 </div>
 
-<script type="module" src="app.js"></script>
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+  signOut
+} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  query,
+  where,
+  onSnapshot,
+  serverTimestamp
+} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+// 🔥 Firebase config
+const firebaseConfig = {
+  apiKey: "846140280738",
+  authDomain: "https://messagerie-cd2ba-default-rtdb.europe-west1.firebasedatabase.app/",
+  projectId: "messagerie-cd2ba"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+let user = null;
+let currentView = "inbox";
+
+// ---------------- AUTH ----------------
+window.signup = async () => {
+  await createUserWithEmailAndPassword(auth, email.value, password.value);
+};
+
+window.login = async () => {
+  await signInWithEmailAndPassword(auth, email.value, password.value);
+};
+
+window.logout = async () => {
+  await signOut(auth);
+};
+
+// ---------------- STATE ----------------
+onAuthStateChanged(auth, (u) => {
+  if (u) {
+    user = u;
+    loginBox.style.display = "none";
+    app.style.display = "block";
+    loadInbox();
+  } else {
+    user = null;
+    loginBox.style.display = "block";
+    app.style.display = "none";
+  }
+});
+
+// ---------------- INBOX ----------------
+window.loadInbox = () => {
+  currentView = "inbox";
+  title.innerText = "Inbox";
+  composeBox.style.display = "none";
+  mailList.innerHTML = "";
+
+  const q = query(collection(db, "mail"), where("toEmail", "==", user.email));
+
+  onSnapshot(q, (snap) => {
+    mailList.innerHTML = "";
+    snap.forEach(doc => {
+      const m = doc.data();
+      mailList.innerHTML += `
+        <div class="mail-item">
+          <b>${m.subject}</b><br>
+          From: ${m.fromEmail}
+        </div>
+      `;
+    });
+  });
+};
+
+// ---------------- SENT ----------------
+window.loadSent = () => {
+  currentView = "sent";
+  title.innerText = "Sent";
+  composeBox.style.display = "none";
+  mailList.innerHTML = "";
+
+  const q = query(collection(db, "mail"), where("fromEmail", "==", user.email));
+
+  onSnapshot(q, (snap) => {
+    mailList.innerHTML = "";
+    snap.forEach(doc => {
+      const m = doc.data();
+      mailList.innerHTML += `
+        <div class="mail-item">
+          <b>${m.subject}</b><br>
+          To: ${m.toEmail}
+        </div>
+      `;
+    });
+  });
+};
+
+// ---------------- COMPOSE ----------------
+window.showCompose = () => {
+  title.innerText = "Compose";
+  mailList.innerHTML = "";
+  composeBox.style.display = "block";
+};
+
+// ---------------- SEND MAIL ----------------
+window.sendMail = async () => {
+  await addDoc(collection(db, "mail"), {
+    fromUid: user.uid,
+    fromEmail: user.email,
+    toEmail: to.value,
+    subject: subject.value,
+    body: body.value,
+    createdAt: serverTimestamp()
+  });
+
+  alert("Message sent!");
+  loadInbox();
+};
+</script>
+
 </body>
 </html>
