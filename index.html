@@ -1,101 +1,40 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flash Fibre - Internet Ultra Rapide</title>
-    <link rel="icon" href="images/favicon.png" type="image/png">
-    <link rel="stylesheet" href="styles.css"> <!-- Fichier CSS séparé -->
-    <style>
-        /* Styles pour le logo */
-        .logo-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Arial', sans-serif;
-        }
-
-        .flash {
-            font-size: 48px;
-            font-style: italic;
-            color: #1976D2; /* Bleu pour "Flash" */
-        }
-
-        .eclair {
-            width: 60px;
-            height: 60px;
-            margin: 0 15px;
-        }
-
-        .fibre {
-            font-size: 48px;
-            font-weight: bold;
-            color: #0d47a1; /* Bleu foncé pour "Fibre" */
-        }
-
-        /* Eclair SVG avec un dégradé et des ombres */
-        .eclair svg {
-            fill: none;
-            width: 100%;
-            height: 100%;
-        }
-
-        /* Dégradé de couleur pour l'éclair */
-        .eclair-gradient {
-            fill: url(#grad1);
-        }
-    </style>
+    <title>Flash Fibre - Accueil</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-    <!-- Header -->
     <header>
-        <!-- Logo avec "Flash" en italique et "Fibre" en gras -->
-        <div class="logo-container">
-            <span class="flash">Flash</span>
-
-            <!-- Éclair bleu amélioré -->
-            <div class="eclair">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 150">
-                    <!-- Définition du dégradé -->
-                    <defs>
-                        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style="stop-color:#1976D2;stop-opacity:1" />
-                            <stop offset="100%" style="stop-color:#FF9800;stop-opacity:1" />
-                        </linearGradient>
-                    </defs>
-                    <!-- Forme de l'éclair -->
-                    <polygon class="eclair-gradient" points="75,10 95,50 75,50 100,90 70,90 85,130 50,110 65,70 35,70 50,40"
-                        stroke="#1976D2" stroke-width="4"/>
-                </svg>
-            </div>
-
-            <span class="fibre">Fibre</span>
-        </div>
-
-        <!-- Navigation -->
+        <a href="index.html" class="logo">Flash<span>Fibre</span></a>
         <nav>
-            <ul>
-                <li><a href="index.html">Accueil</a></li>
-                <li><a href="offres.html">Nos Offres</a></li>
-                <li><a href="fonctionnalites.html">Fonctionnalités</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
+            <a href="index.html">Accueil</a>
+            <a href="offres.html">Nos Offres</a>
+            <a href="contact.html">Contact</a>
         </nav>
-        <h1>Flash Fibre - Internet Ultra Rapide</h1>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero">
-        <h2>Profitez de la meilleure connexion fibre en un clin d'œil</h2>
-        <a href="offres.html" class="cta-button">Découvrez nos offres</a>
+        <h1>Passez à la Vitesse Lumière.</h1>
+        <p>Jusqu'à 2 Gbit/s. Fini les coupures, bonjour la fluidité.</p>
+        <a href="offres.html" class="btn">Voir nos abonnements</a>
     </section>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2026 Flash Fibre - Tous droits réservés.</p>
-    </footer>
-</body>
+    <div class="content-section">
+        <h2>Pourquoi choisir Flash Fibre ?</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>⚡ Vitesse Extrême</h3>
+                <p>Téléchargez et streamez sans aucune limite.</p>
+            </div>
+            <div class="card">
+                <h3>🛡️ Sans Engagement</h3>
+                <p>Vous êtes libre de nous quitter, mais vous resterez pour la qualité.</p>
+            </div>
+        </div>
+    </div>
 
+    <footer><p>&copy; 2026 Flash Fibre.</p></footer>
+</body>
 </html>
