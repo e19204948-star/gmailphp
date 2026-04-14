@@ -2,6 +2,8 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Découvrez les offres internet fibre optique de Flash Fibre.">
     <title>Nos Offres - Flash Fibre</title>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -10,33 +12,44 @@
         <a href="index.html" class="logo">Flash<span>Fibre</span></a>
         <nav>
             <a href="index.html">Accueil</a>
-            <a href="offres.html">Nos Offres</a>
+            <a href="offres.html" class="active">Nos Offres</a>
             <a href="contact.html">Contact</a>
         </nav>
     </header>
 
-    <div class="content-section">
+    <main class="content-section">
         <h2>Choisissez l'offre qui vous correspond</h2>
+        <p class="subtitle">Des forfaits clairs, sans frais cachés.</p>
+        
         <div class="grid">
             <div class="card">
+                <span class="badge badge-normal">Essentiel</span>
                 <h3>Offre Start</h3>
-                <h2>29,99€ <small>/mois</small></h2>
-                <p>Jusqu'à 500 Mbit/s</p>
-                <p>Box Wi-Fi 5 incluse</p>
-                <p>Appels illimités fixes</p>
+                <h2 class="price">29,99€ <small>/mois</small></h2>
+                <ul class="features-list">
+                    <li>Jusqu'à 500 Mbit/s</li>
+                    <li>Box Wi-Fi 5 incluse</li>
+                    <li>Appels illimités vers les fixes</li>
+                </ul>
                 <a href="contact.html" class="btn">Souscrire</a>
             </div>
-            <div class="card" style="border: 2px solid #FF007F;">
+            
+            <div class="card premium-card">
+                <span class="badge badge-premium">Populaire</span>
                 <h3>Offre Premium</h3>
-                <h2>39,99€ <small>/mois</small></h2>
-                <p>Jusqu'à 2 Gbit/s</p>
-                <p>Box Wi-Fi 6 dernière génération</p>
-                <p>Appels illimités fixes & mobiles</p>
-                <a href="contact.html" class="btn">Souscrire</a>
+                <h2 class="price">39,99€ <small>/mois</small></h2>
+                <ul class="features-list">
+                    <li>Jusqu'à 2 Gbit/s</li>
+                    <li>Box Wi-Fi 6 dernière génération</li>
+                    <li>Appels illimités fixes & mobiles</li>
+                </ul>
+                <a href="contact.html" class="btn btn-premium">Souscrire</a>
             </div>
         </div>
-    </div>
+    </main>
 
-    <footer><p>&copy; 2026 Flash Fibre.</p></footer>
+    <footer>
+        <p>&copy; 2026 Flash Fibre. Tous droits réservés.</p>
+    </footer>
 </body>
 </html>
