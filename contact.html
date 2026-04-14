@@ -2,6 +2,8 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contactez Flash Fibre pour toute question ou test d'éligibilité.">
     <title>Contact - Flash Fibre</title>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -11,28 +13,36 @@
         <nav>
             <a href="index.html">Accueil</a>
             <a href="offres.html">Nos Offres</a>
-            <a href="contact.html">Contact</a>
+            <a href="contact.html" class="active">Contact</a>
         </nav>
     </header>
 
-    <div class="content-section">
+    <main class="content-section">
         <h2>Contactez-nous</h2>
-        <p>Une question ? Un test d'éligibilité ? Laissez-nous un message.</p>
+        <p class="subtitle">Une question ? Un test d'éligibilité ? Laissez-nous un message.</p>
         
-        <form action="#" method="POST">
-            <label for="nom">Votre Nom :</label>
-            <input type="text" id="nom" name="nom" required>
+        <form action="#" method="POST" class="contact-form">
+            <div class="input-group">
+                <label for="nom">Votre Nom :</label>
+                <input type="text" id="nom" name="nom" placeholder="Jean Dupont" required>
+            </div>
             
-            <label for="email">Votre Email :</label>
-            <input type="email" id="email" name="email" required>
+            <div class="input-group">
+                <label for="email">Votre Email :</label>
+                <input type="email" id="email" name="email" placeholder="jean.dupont@email.com" required>
+            </div>
             
-            <label for="message">Votre Message ou Adresse :</label>
-            <textarea id="message" name="message" rows="5" required></textarea>
+            <div class="input-group">
+                <label for="message">Votre Message ou Adresse :</label>
+                <textarea id="message" name="message" rows="5" placeholder="Bonjour, je souhaite tester l'éligibilité de ma ligne au..." required></textarea>
+            </div>
             
-            <button type="submit" class="btn" style="border:none; cursor:pointer; width:100%;">Envoyer la demande</button>
+            <button type="submit" class="btn btn-full">Envoyer la demande</button>
         </form>
-    </div>
+    </main>
 
-    <footer><p>&copy; 2026 Flash Fibre.</p></footer>
+    <footer>
+        <p>&copy; 2026 Flash Fibre. Tous droits réservés.</p>
+    </footer>
 </body>
 </html>
