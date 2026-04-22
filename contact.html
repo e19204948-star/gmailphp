@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flash FIBRES - Contact</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%); color: #333; line-height: 1.6; }
+    header { background: linear-gradient(135deg, #0a1f44 0%, #1e90ff 100%); color: white; padding: 25px 40px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 8px 32px rgba(10, 31, 68, 0.2); position: sticky; top: 0; z-index: 100; }
+    header h1 { margin: 0; font-size: 28px; font-weight: 700; letter-spacing: 1px; display: flex; align-items: center; gap: 12px; }
+    header h1::before { content: '⚡'; font-size: 32px; animation: pulse 2s ease-in-out infinite; color: #1e90ff; }
+    @keyframes pulse { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.1); opacity: 0.8; } }
+    header h1:hover::before { animation: none; }
+    nav a { color: white; margin-left: 25px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; padding: 8px 16px; border-radius: 6px; }
+    nav a:hover { background: rgba(255,255,255,0.2); transform: translateY(-2px); }
+    .section { padding: 80px 40px; max-width: 700px; margin: 0 auto; text-align: center; }
+    .section h2 { font-size: 42px; color: #0a1f44; margin-bottom: 30px; font-weight: 700; }
+    .contact-info { background: white; padding: 40px; border-radius: 15px; margin-bottom: 40px; box-shadow: 0 15px 40px rgba(0,0,0,0.08); border-left: 5px solid #1e90ff; }
+    .contact-info p { margin: 12px 0; font-size: 16px; color: #555; }
+    .contact-info strong { color: #0a1f44; font-weight: 700; }
+    form { display: flex; flex-direction: column; gap: 22px; background: white; padding: 50px; border-radius: 15px; box-shadow: 0 15px 40px rgba(0,0,0,0.08); text-align: left; }
+    form label { font-weight: 600; color: #0a1f44; font-size: 15px; margin-bottom: 8px; display: block; }
+    form input, form textarea { padding: 14px 16px; border: 2px solid #e0e0e0; border-radius: 8px; width: 100%; font-family: inherit; font-size: 15px; transition: all 0.3s ease; background: #fafbfc; }
+    form input:focus, form textarea:focus { outline: none; border-color: #1e90ff; background: white; box-shadow: 0 0 0 3px rgba(30, 144, 255, 0.1); }
+    form button { background: linear-gradient(135deg, #1e90ff, #0a6fd9); color: white; padding: 15px 40px; border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 8px 20px rgba(30, 144, 255, 0.3); }
+    form button:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(30, 144, 255, 0.5); background: linear-gradient(135deg, #0a6fd9, #0a1f44); }
+    footer { background: linear-gradient(135deg, #0a1f44, #1e3a5f); color: white; text-align: center; padding: 30px; margin-top: 40px; font-size: 14px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Flash FIBRES</h1>
+  <nav>
+    <a href="index.html">Accueil</a>
+    <a href="offres.html">Nos Offres</a>
+    <a href="contact.html">Contact</a>
+    <a href="panier.html">🛒 Panier <span id="cart-count"></span></a>
+  </nav>
+</header>
+
+<section class="section" id="contact">
+  <h2>Contactez-nous</h2>
+  
+  <div class="contact-info">
+    <p><strong>Email :</strong> contact@flashfibres.com</p>
+    <p><strong>Téléphone :</strong> 01 23 45 67 89</p>
+  </div>
+
+  <form action="#" method="POST">
+    <label for="nom">Nom complet</label>
+    <input type="text" id="nom" name="nom" placeholder="Votre nom" required>
+
+    <label for="email">Adresse Email</label>
+    <input type="email" id="email" name="email" placeholder="votre@email.com" required>
+
+    <label for="message">Votre message</label>
+    <textarea id="message" name="message" rows="5" placeholder="Comment pouvons-nous vous aider ?" required></textarea>
+
+    <button type="submit">Envoyer le message</button>
+  </form>
+</section>
+
+<footer>
+  <p>&copy; 2026 Flash FIBRES - Tous droits réservés</p>
+</footer>
+
+<script>
+  // Mise à jour du compteur du panier
+  function updateCartCount() {
+    const cartItems = localStorage.getItem('cartItems');
+    const items = cartItems ? JSON.parse(cartItems) : [];
+    const count = items.reduce((sum, item) => sum + item.quantity, 0);
+    const countElements = document.querySelectorAll('#cart-count');
+    countElements.forEach(el => {
+      el.textContent = count > 0 ? `(${count})` : '';
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', updateCartCount);
+</script>
+
+</body>
+</html>
